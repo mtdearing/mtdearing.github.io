@@ -322,6 +322,43 @@
   }
   </script>
 
+<script>
+  (async () => {
+    // Option A: Raw GitHub URL (simplest)
+    const rawUrl =
+      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/publications.html';
+
+    // Option B: GitHub REST API (if you ever want to add auth or check rate limits)
+    // const apiUrl =
+    //   'https://api.github.com/repos/mtdearing/mtdearing.github.io/contents/publications.html';
+    // const fetchOpts = {
+    //   headers: { Accept: 'application/vnd.github.v3.raw' }
+    // };
+
+    try {
+      const resp = await fetch(rawUrl /* , fetchOpts */ );
+      console.log('Fetch status:', resp.status, resp.statusText);
+      if (!resp.ok) {
+        throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
+      }
+
+      const htmlFragment = await resp.text();
+      // quick sanity‑check: did we actually get UL markup?
+      if (!htmlFragment.trim().startsWith('<ul')) {
+        console.warn('Payload doesn\'t look like a <ul>… you got:', htmlFragment.slice(0,100));
+      }
+
+      document.querySelector('#mtd_publications').innerHTML = htmlFragment;
+      console.log('Publications injected successfully.');
+    } catch (err) {
+      console.error('❌ Could not load publications:', err);
+      // Optionally show a user‑facing message:
+      document.querySelector('#mtd_publications').innerHTML =
+        '<p style="color:red">Failed to load publications. See console for details.</p>';
+    }
+  })();
+</script>
+
 <footer class="w3-container uis-blue w3-center w3-margin-top w3-text-white">
   <p>Elsewhere on the web.<br>
     <a href="https://www.linkedin.com/in/matthewtdearing/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
