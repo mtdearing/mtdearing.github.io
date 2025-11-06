@@ -155,20 +155,9 @@
               <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
               <h2>Teaching philosophy</h2>
             </div>
-            <div class="w3-container" style="text-align: justify;">
-              <p>Teaching science and mathematics is not a complete science, nor should it ever evolve into one. It is mostly a creative art form; a successful performance demands nothing less than prepared and rehearsed acting, clear and confident stage presence, and, above all, deep creativity. I may not yet have mastered the art form of teaching. But, I am exploring the medium, thoroughly enjoying the process, and am continually discovering new ways to express clear, meaningful, and useful guidance for students during their own academic development.</p>
-
-              <p>It is important to me that my students understand that everyone is following a personal development process through school and that it is impossible for any teacher to transfer new understandings via lectures and interactive learning automatically. The teacher is a guide with the responsibility of directing and assisting a student's brain with its first grasp of fundamental concepts and then applying these concepts to develop further logical and intuitive reasoning and practical skills.</p>
-
-              <p>A teacher can give the ultimate phrase that allows a new concept to "click" with a student, and I always strive for the discovery of these phrases. However, not only will different phrases work for different students, but the students must still be personally active on their own accord if they will retain and expand their knowledge from that new seed of understanding. I have already seen many students who have learned by short-term memorization (I certainly studied this way because it seemed the easiest method at the time!), but it is clear that this approach cannot bring a true understanding of any mathematical or physical concept. So, I work to push my students to the next level in academics where they have to work harder on their own if they are to really "click" with the subject--with thorough and effective guidance from a teacher, but still mostly on their own. Although they may not realize the results of this process of deep understanding until well after final grades are filed, I try to convince that this personal process will bring great rewards to each student.</p>
-
-              <p>I believe that teaching science and mathematics is particularly important not just to create a deluge of professional scientists and professors (although these folks are certainly an important part of keeping our society and culture moving forward) but to bring a broader base of the general public in every type of profession to a higher level of understanding and appreciation for the universe.</p>
-              
-              <p>Raising the intellectual bar of the masses is absolutely critical to the long-term success of our culture. I'm certainly not suggesting the ideal world will have every last citizen debating Nietzsche and re-deriving Newton's Laws up from Quantum Mechanics just for kicks. Rather, I would like for most people to grow into a moderate understanding of how things work around us in order that we may have an honest appreciation and respect for the amazing physical universe of which we are an intimate part. This appreciation will result in more reasonable decisions made by humans at the individual level of daily activities to large-scale governmental policy that affects more things than anyone probably realizes.</p>
-              
-              <p><img src="graphics\mtd_signature_2024.jpg" width="250" alt="mtd Signature"></p>
-
-            </div>
+            <section id="mtd_philosophy">
+              <!-- publications will be loaded here -->
+            </section>
           </div>
         </div>
 
@@ -300,13 +289,15 @@
       'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/professional.html';
     const eduUrl = 
       'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/education.html';
+    const philUrl = 
+      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/teachingphil.html';
     
     // Inject into the corresponding containers
     await loadFragment(pubUrl, '#mtd_publications');
     await loadFragment(acadUrl, '#mtd_academia'); 
     await loadFragment(proUrl, '#mtd_professional');
-    await loadFragment(eduUrl, '#mtd_education');
-
+    await loadFragment(eduUrl, '#mtd_education'); 
+    await loadFragment(philUrl, '#mtd_philosophy'); 
   })();
 </script>
 
