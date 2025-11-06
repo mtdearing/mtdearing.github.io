@@ -236,24 +236,9 @@
               <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
               <h2>Academic experience</h2>
             </div>
-            <h4><i>Academic Service</i></h4>
-            <ul class="w3-ul">
-              <li>Program Committee, LLM x HPC 2025 International Workshop on Large Language Models (LLMs) and HPC with CLUSTER '25 | 2025</li>
-              <li>Technical Committee, AI4Dev 2025 The Workshop on AI Assisted Software Development for HPC with ICPP 2025 | 2025</li>
-            </ul>
-            <h4><i>Teaching Experience</i></h4>
-            <ul class="w3-ul">
-              <li><a href="https://uisacad5.uis.edu/~mdear2/" target="_blank"><b>Adjunct Instructor</b></a>, Department of Computer Science, University of Illinois Springfield <br>
-                <span class="w3-small">&nbsp;Springfield, Illinois | <strong>2022 - present</strong></span></li>
-              <li>Adjunct Instructor, Physics Department, Illinois Wesleyan University <br>
-                <span class="w3-small">&nbsp;Bloomington, Illinois | <strong>2014 - 2015</strong></span></li>
-              <li>Lecturer, Department of Mathematics, Wells College <br>
-                <span class="w3-small">&nbsp;Aurora, New York	| <strong>2004 - 2005</strong></2004></span></li>
-              <li>Adjunct Instructor, Physics and Math, Tompkins Cortland Community College <br>
-                <span class="w3-small">&nbsp;Dryden, New York	| <strong>2003 - 2005</strong></span></li>
-              <li>Teaching Associate/Assistant, Department of Physics, Cornell University <br>
-                <span class="w3-small">&nbsp;Ithaca, New York	| <strong>2002 - 2005</strong></span></li>
-              </ul>          
+            <section id="mtd_academia">
+              <!-- academic experience will be loaded here -->
+            </section>         
           </div>
         </div>
 
@@ -337,39 +322,32 @@
   </script>
 
 <script>
-  (async () => {
-    // Option A: Raw GitHub URL (simplest)
-    const rawUrl =
-      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/publications.html';
-
-    // Option B: GitHub REST API (if you ever want to add auth or check rate limits)
-    // const apiUrl =
-    //   'https://api.github.com/repos/mtdearing/mtdearing.github.io/contents/publications.html';
-    // const fetchOpts = {
-    //   headers: { Accept: 'application/vnd.github.v3.raw' }
-    // };
-
+  // Helper that fetches a raw‑HTML file and sets innerHTML on the given selector
+  async function loadFragment(url, selector) {
     try {
-      const resp = await fetch(rawUrl /* , fetchOpts */ );
-      console.log('Fetch status:', resp.status, resp.statusText);
-      if (!resp.ok) {
-        throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
-      }
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      const fragment = await res.text();
 
-      const htmlFragment = await resp.text();
-      // quick sanity‑check: did we actually get UL markup?
-      if (!htmlFragment.trim().startsWith('<ul')) {
-        console.warn('Payload doesn\'t look like a <ul>… you got:', htmlFragment.slice(0,100));
-      }
-
-      document.querySelector('#mtd_publications').innerHTML = htmlFragment;
-      console.log('Publications injected successfully.');
+      document.querySelector(selector).innerHTML = fragment;
+      console.log(`Injected into ${selector}`);
     } catch (err) {
-      console.error('❌ Could not load publications:', err);
-      // Optionally show a user‑facing message:
-      document.querySelector('#mtd_publications').innerHTML =
-        '<p style="color:red">Failed to load publications. See console for details.</p>';
+      console.error(`❌ Could not load ${url}:`, err);
+      document.querySelector(selector).innerHTML =
+        '<p style="color:red">Failed to load content. See console for details.</p>';
     }
+  }
+
+  (async () => {
+    const pubUrl =
+      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/publications.html';
+    const acadUrl = 
+      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/academia.html';
+    
+    // Inject into the corresponding containers
+    await loadFragment(pubUrl, '#mtd_publications');
+    await loadFragment(acadUrl, '#mtd_academia');
+
   })();
 </script>
 
