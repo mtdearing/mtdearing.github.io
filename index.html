@@ -30,6 +30,33 @@
     background-color: #001E62 !important;
     color: #fff !important;
   }
+  .tab-short {display: none}
+  /* When the tabs no longer fit on one line, lay them out as two even rows (4 + 3) */
+  @media (max-width: 1150px) {
+    .tab-nav {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    /* w3-bar's clearfix pseudo-elements would otherwise take up grid cells */
+    .tab-nav::before, .tab-nav::after {
+      display: none;
+    }
+    .tab-nav .tab-link {
+      grid-column: span 3;
+      float: none;
+      text-align: center;
+      padding: 10px 2px;
+      font-size: clamp(12px, 3.6vw, 15px);
+    }
+    .tab-nav .tab-link:nth-child(n+5) {
+      grid-column: span 4;
+      border-top: 1px solid #ddd;
+    }
+  }
+  @media (max-width: 700px) {
+    .tab-long {display: none}
+    .tab-short {display: inline}
+  }
   /* Profile card: circular photo overlaps a taller navy banner */
   .profile-banner {
     height: 104px;
@@ -63,6 +90,27 @@
   }
   .profile-info p {
     margin: 10px 0;
+  }
+  /* Footer: a quiet line under the content, aligned with the cards */
+  .site-footer {
+    max-width: 1400px;
+    margin: 28px auto 0;
+    padding: 0 16px 24px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 15px;
+  }
+  .site-footer p {
+    margin: 0;
+    padding-top: 14px;
+    border-top: 1px solid #d0d4db;
+  }
+  .site-footer a {
+    color: #001E62;
+    font-size: 18px;
+    margin-left: 10px;
+    text-decoration: none;
+    vertical-align: middle;
   }
   /* Phones and tablets: stack the profile card above the content */
   @media (max-width: 992px) {
@@ -151,10 +199,10 @@
     <div class="w3-threequarter">
       <div class="w3-bar uic-navy">&nbsp;</div>
       <div class="w3-container w3-card w3-white w3-padding">
-        <nav class="w3-bar w3-border w3-light-grey" aria-label="Sections">
+        <nav class="w3-bar w3-border w3-light-grey tab-nav" aria-label="Sections">
           <a class="w3-bar-item w3-button tab-link" href="#about">About</a>
           <a class="w3-bar-item w3-button tab-link" href="#teaching">Teaching</a>
-          <a class="w3-bar-item w3-button tab-link" href="#philosophy">Teaching philosophy</a>
+          <a class="w3-bar-item w3-button tab-link" href="#philosophy"><span class="tab-long">Teaching philosophy</span><span class="tab-short">Philosophy</span></a>
           <a class="w3-bar-item w3-button tab-link" href="#research">Research</a>
           <a class="w3-bar-item w3-button tab-link" href="#publications">Publications</a>
           <a class="w3-bar-item w3-button tab-link" href="#education">Education</a>
@@ -313,12 +361,11 @@
   ]);
 </script>
 
-<footer class="w3-container uic-navy w3-center w3-margin-top w3-text-white">
-  <p>Elsewhere on the web.<br>
-    <a href="https://www.linkedin.com/in/matthewtdearing/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
-    &nbsp;<a href="https://github.com/mtdearing" target="_blank"><i class="fa-brands fa-github w3-hover-opacity"></i></a>
+<footer class="site-footer">
+  <p>Elsewhere on the web
+    <a href="https://www.linkedin.com/in/matthewtdearing/" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+    <a href="https://github.com/mtdearing" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github w3-hover-opacity"></i></a>
   </p>
-
 </footer>
 
 </body>
