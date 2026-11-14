@@ -48,6 +48,13 @@
       padding: 10px 2px;
       font-size: clamp(12px, 3.6vw, 15px);
     }
+    /* First row: narrower cell for the short "About", wider for "Publications" */
+    .tab-nav .tab-link:nth-child(1) {
+      grid-column: span 2;
+    }
+    .tab-nav .tab-link:nth-child(4) {
+      grid-column: span 4;
+    }
     .tab-nav .tab-link:nth-child(n+5) {
       grid-column: span 4;
       border-top: 1px solid #ddd;
@@ -202,11 +209,11 @@
         <nav class="w3-bar w3-border w3-light-grey tab-nav" aria-label="Sections">
           <a class="w3-bar-item w3-button tab-link" href="#about">About</a>
           <a class="w3-bar-item w3-button tab-link" href="#teaching">Teaching</a>
-          <a class="w3-bar-item w3-button tab-link" href="#philosophy"><span class="tab-long">Teaching philosophy</span><span class="tab-short">Philosophy</span></a>
           <a class="w3-bar-item w3-button tab-link" href="#research">Research</a>
           <a class="w3-bar-item w3-button tab-link" href="#publications">Publications</a>
           <a class="w3-bar-item w3-button tab-link" href="#education">Education</a>
           <a class="w3-bar-item w3-button tab-link" href="#professional">Professional</a>
+          <a class="w3-bar-item w3-button tab-link" href="#philosophy"><span class="tab-long">Teaching philosophy</span><span class="tab-short">Philosophy</span></a>
         </nav>
 
         <!-- ABOUT -->
@@ -313,7 +320,7 @@
 <script>
   // Each tab has its own address (e.g. #teaching), so tabs can be linked to directly
   // and the browser back button works.
-  var TABS = ['about', 'teaching', 'philosophy', 'research', 'publications', 'education', 'professional'];
+  var TABS = ['about', 'teaching', 'research', 'publications', 'education', 'professional', 'philosophy'];
 
   function showTab() {
     var name = window.location.hash.replace('#', '');
