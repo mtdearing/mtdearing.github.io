@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>Matthew T. Dearing | Ph.D. Candidate, University of Illinois Chicago</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Matthew T. Dearing: Ph.D. Candidate in Computer Science at the University of Illinois Chicago, AI for Operations Technical Lead at Argonne National Laboratory, and college instructor.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mtdearing.github.io/">
+<meta property="og:title" content="Matthew T. Dearing">
+<meta property="og:description" content="Ph.D. Candidate in Computer Science at the University of Illinois Chicago, AI for Operations Technical Lead at Argonne National Laboratory, and college instructor.">
+<meta property="og:image" content="https://mtdearing.github.io/graphics/Matthew%20Dearing%202022_crop1000.jpg">
+<meta name="twitter:card" content="summary">
 <link rel="shortcut icon" href="graphics/favicon.ico" type="image/x-icon">
 <link rel="icon" href="graphics/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -16,16 +23,37 @@
 <!--font-family:  "EB Garamond", serif;-->
 <style>  
   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif }
-  .uis-blue {background-color:rgb(0, 51, 102)!important}
+  .uic-navy {background-color:#001E62!important}  /* UIC Navy Pier Blue */
+  .prose {text-align: justify}
+  /* Tab navigation: highlight the open tab */
+  .tab-link.tab-active, .tab-link.tab-active:hover {
+    background-color: #001E62 !important;
+    color: #fff !important;
+  }
   @media (max-width: 600px) {
     .mobile-heading {
       font-size: 32px; /* Adjust to your desired size */
       padding-top: 0px !important;
     }
-    .header-container .close-button {
-      position: static;  /* Reset to default positioning */
-      display: block;    /* Display button on its own line */
-      text-align: right; /* Align button to the right */
+    /* Justified text leaves wide gaps in a narrow column */
+    .prose {
+      text-align: left;
+    }
+    /* Keep the logo and profile photo compact on phones */
+    .site-logo img {
+      max-width: 240px;
+    }
+    .profile-photo {
+      box-shadow: none !important;
+      padding-top: 16px;
+      text-align: center;
+    }
+    .profile-photo img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
     }
   }
   /* Highlights for the sub header list items */
@@ -40,12 +68,10 @@
 
 <body class="w3-light-grey">
 
-<!-- UIC colors: RGB:  -->
-
 <!-- Page Container -->  <!-- w3-padding-top-32 -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
   <div class="w3-container">
-    <div class="w3-quarter w3-center w3-padding">
+    <div class="w3-quarter w3-center w3-padding site-logo">
       <img src="graphics/uic_logo_png_web_x500.png" style="width:100%" alt="University of Illinois Chicago">
     </div>
     <div  class="w3-threequarter w3-padding">
@@ -58,10 +84,10 @@
     
     <!-- Left Column -->
     <div class="w3-quarter">
-      <div class="w3-bar uis-blue">&nbsp;</div>
+      <div class="w3-bar uic-navy">&nbsp;</div>
       <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-card-4 w3-margin-left w3-margin-right">
-          <img src="graphics/Matthew Dearing 2022_crop1000.jpg" class="w3-image w3-round" alt="mtd Avatar">
+        <div class="w3-card-4 w3-margin-left w3-margin-right profile-photo">
+          <img src="graphics/Matthew Dearing 2022_crop1000.jpg" class="w3-image w3-round" alt="Matthew T. Dearing">
         </div>
         <div class="w3-container w3-margin-top">
           <h3><i><strong>Ph.D. Candidate</strong></i></h3>
@@ -77,7 +103,6 @@
             </p>
           <p><i class="fa fa-file-pdf-o fa-fw w3-margin-right w3-small w3-text-teal"></i><a href="cv/Dearing_CV.pdf" target="_blank">Curriculum Vitae (PDF)</a></p>
           <p><i class="fa fa-envelope fa-fw w3-margin-right w3-small w3-text-teal"></i>mdear2 (AT) uic.edu</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-small w3-text-teal"></i>zoom</p>
           <p><i class="fa fa-home fa-fw w3-margin-right w3-small w3-text-teal"></i>Chicago, Illinois</p>
         </div>
       </div><br>
@@ -87,21 +112,22 @@
 
     <!-- Right Column -->
     <div class="w3-threequarter">
-      <div class="w3-bar uis-blue">&nbsp;</div>
+      <div class="w3-bar uic-navy">&nbsp;</div>
       <div class="w3-container w3-card w3-white w3-padding">
-        <div class="w3-bar w3-border w3-light-grey">
-          <a class="w3-bar-item w3-button w3-hover-blue" onclick="openContent('education')">Education</a>
-          <a class="w3-bar-item w3-button w3-hover-blue" onclick="openContent('academic')">Academia</a>
-          <a class="w3-bar-item w3-button w3-hover-blue" onclick="openContent('research')">Research</a>
-          <a class="w3-bar-item w3-button w3-hover-blue" onclick="openContent('publications')">Publications</a>
-          <a class="w3-bar-item w3-button w3-hover-blue" onclick="openContent('professional')">Professional</a>
-          <a class="w3-bar-item w3-button w3-hover-blue" onclick="openContent('teaching')">Teaching philosophy</a>
-        </div>
+        <nav class="w3-bar w3-border w3-light-grey" aria-label="Sections">
+          <a class="w3-bar-item w3-button tab-link" href="#about">About</a>
+          <a class="w3-bar-item w3-button tab-link" href="#teaching">Teaching</a>
+          <a class="w3-bar-item w3-button tab-link" href="#philosophy">Teaching philosophy</a>
+          <a class="w3-bar-item w3-button tab-link" href="#research">Research</a>
+          <a class="w3-bar-item w3-button tab-link" href="#publications">Publications</a>
+          <a class="w3-bar-item w3-button tab-link" href="#education">Education</a>
+          <a class="w3-bar-item w3-button tab-link" href="#professional">Professional</a>
+        </nav>
 
         <!-- ABOUT -->
         <div class="w3-container">
-          <div id="about" class="w3-display-container content_section" style="display:block">
-            <div class="w3-container w3-padding" style="text-align: justify;">
+          <div id="tab-about" class="w3-display-container content_section" style="display:block">
+            <div class="w3-container w3-padding prose">
 
               <!-- Image aligned to the right -->
               <a href="https://spear.lab.uic.edu/" target="_blank"><img src="graphics/SPEAR-UIC-logo-black.png" alt="SPEAR Lab at UIC" style="float:right; width:75px; margin-left: 10px;"></a>
@@ -124,26 +150,30 @@
           </div>
         </div>
 
+        <!-- TEACHING -->
+        <div class="w3-container">
+          <div id="tab-teaching" class="w3-display-container content_section" style="display:none">
+            <h2>Teaching and academic service</h2>
+            <section id="mtd_academia">
+              <!-- teaching and academic experience will be loaded here -->
+            </section>
+          </div>
+        </div>
+
         <!-- TEACHING PHILOSOPHY -->
         <div class="w3-container">
-          <div id="teaching" class="w3-display-container content_section" style="display:none">
-            <div class="header-container">
-              <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
-              <h2>Teaching philosophy</h2>
-            </div>
+          <div id="tab-philosophy" class="w3-display-container content_section" style="display:none">
+            <h2>Teaching philosophy</h2>
             <section id="mtd_philosophy">
-              <!-- publications will be loaded here -->
+              <!-- teaching philosophy will be loaded here -->
             </section>
           </div>
         </div>
 
         <!-- RESEARCH -->
         <div class="w3-container">
-          <div id="research" class="w3-display-container content_section" style="display:none">
-            <div class="header-container">
-              <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
-              <h2>Research interests</h2>
-            </div>
+          <div id="tab-research" class="w3-display-container content_section" style="display:none">
+            <h2>Research interests</h2>
             <ul class="w3-ul">
               <li>Leveraging Large Language Models (LLMs) for code generation and translation in high-performance computing (HPC).</li>
               <li>AI-enhanced scheduling algorithms for HPC system optimization.</li>
@@ -156,11 +186,8 @@
 
         <!-- PUBLICATIONS -->
         <div class="w3-container">
-          <div id="publications" class="w3-display-container content_section" style="display:none">
-            <div class="header-container">
-              <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
-              <h2>Publications <span class="w3-medium">&nbsp;<i>Journal & conference papers, Presentations, Patent</i></span></h2>
-            </div>
+          <div id="tab-publications" class="w3-display-container content_section" style="display:none">
+            <h2>Publications <span class="w3-medium">&nbsp;<i>Journal &amp; conference papers, Presentations, Patent</i></span></h2>
             <section id="mtd_publications">
               <!-- publications will be loaded here -->
             </section>
@@ -169,116 +196,89 @@
 
         <!-- EDUCATION -->
         <div class="w3-container">
-          <div id="education" class="w3-display-container content_section" style="display:none">
-            <div class="header-container">
-              <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
-              <h2>Education</h2>
-            </div>
+          <div id="tab-education" class="w3-display-container content_section" style="display:none">
+            <h2>Education</h2>
             <section id="mtd_education">
-              <!-- education experience will be loaded here -->
+              <!-- education will be loaded here -->
             </section>
-          </div>
-        </div>
-        
-        <!-- ACADEMIC EXPERIENCE -->
-        <div class="w3-container">
-          <div id="academic" class="w3-display-container content_section" style="display:none">
-            <div class="header-container">
-              <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
-              <h2>Academic experience</h2>
-            </div>
-            <section id="mtd_academia">
-              <!-- academic experience will be loaded here -->
-            </section>         
           </div>
         </div>
 
         <!-- PROFESSIONAL EXPERIENCE -->
         <div class="w3-container">
-          <div id="professional" class="w3-display-container content_section" style="display:none">
-            <div class="header-container">
-              <span onclick="resetContent()" class="w3-button w3-display-topright close-button"><i class="fa-regular fa-circle-xmark fa-lg"></i></span>
-              <h2>Professional experience</h2>
-            </div>
+          <div id="tab-professional" class="w3-display-container content_section" style="display:none">
+            <h2>Professional experience</h2>
             <section id="mtd_professional">
-              <!-- academic experience will be loaded here -->
-            </section> 
+              <!-- professional experience will be loaded here -->
+            </section>
           </div>
         </div>
       </div>
 
     <!-- End Right Column -->
     </div>
-    
+
   <!-- End Grid -->
   </div>
-  
+
   <!-- End Page Container -->
 </div>
 
 
 <script>
-  function openContent(content) {
-    var i;
-    var x = document.getElementsByClassName("content_section");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
+  // Each tab has its own address (e.g. #teaching), so tabs can be linked to directly
+  // and the browser back button works.
+  var TABS = ['about', 'teaching', 'philosophy', 'research', 'publications', 'education', 'professional'];
+
+  function showTab() {
+    var name = window.location.hash.replace('#', '');
+    if (TABS.indexOf(name) === -1) name = 'about';
+
+    var sections = document.getElementsByClassName('content_section');
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = (sections[i].id === 'tab-' + name) ? 'block' : 'none';
     }
-    document.getElementById(content).style.display = "block";  
+
+    var links = document.getElementsByClassName('tab-link');
+    for (var j = 0; j < links.length; j++) {
+      var active = links[j].getAttribute('href') === '#' + name;
+      links[j].classList.toggle('tab-active', active);
+      if (active) links[j].setAttribute('aria-current', 'page');
+      else links[j].removeAttribute('aria-current');
+    }
   }
 
-  function resetContent() {
-    var i;
-    var x = document.getElementsByClassName("content_section");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
-    }
-    document.getElementById('about').style.display = "block";  
-  }
-  </script>
+  window.addEventListener('hashchange', showTab);
+  showTab();
+</script>
 
 <script>
-  // Helper that fetches a raw‑HTML file and sets innerHTML on the given selector
+  // Helper that fetches an HTML fragment from this site and sets innerHTML on the given selector
   async function loadFragment(url, selector) {
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-      const fragment = await res.text();
-
-      document.querySelector(selector).innerHTML = fragment;
-      console.log(`Injected into ${selector}`);
+      document.querySelector(selector).innerHTML = await res.text();
     } catch (err) {
-      console.error(`❌ Could not load ${url}:`, err);
+      console.error(`Could not load ${url}:`, err);
       document.querySelector(selector).innerHTML =
         '<p style="color:red">Failed to load content. See console for details.</p>';
     }
   }
 
-  (async () => {
-    const pubUrl =
-      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/publications.html';
-    const acadUrl = 
-      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/academia.html';
-    const proUrl = 
-      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/professional.html';
-    const eduUrl = 
-      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/education.html';
-    const philUrl = 
-      'https://raw.githubusercontent.com/mtdearing/mtdearing.github.io/main/teachingphil.html';
-    
-    // Inject into the corresponding containers
-    await loadFragment(pubUrl, '#mtd_publications');
-    await loadFragment(acadUrl, '#mtd_academia'); 
-    await loadFragment(proUrl, '#mtd_professional');
-    await loadFragment(eduUrl, '#mtd_education'); 
-    await loadFragment(philUrl, '#mtd_philosophy'); 
-  })();
+  // Load all tab content in parallel
+  Promise.all([
+    loadFragment('publications.html', '#mtd_publications'),
+    loadFragment('academia.html', '#mtd_academia'),
+    loadFragment('professional.html', '#mtd_professional'),
+    loadFragment('education.html', '#mtd_education'),
+    loadFragment('teachingphil.html', '#mtd_philosophy')
+  ]);
 </script>
 
-<footer class="w3-container uis-blue w3-center w3-margin-top w3-text-white">
+<footer class="w3-container uic-navy w3-center w3-margin-top w3-text-white">
   <p>Elsewhere on the web.<br>
     <a href="https://www.linkedin.com/in/matthewtdearing/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
-    &nbsp;<a href="https://discordapp.com/users/the.rocket" target="_blank"><i class="fa-brands fa-discord w3-hover-opacity"></i></a>
     &nbsp;<a href="https://github.com/mtdearing" target="_blank"><i class="fa-brands fa-github w3-hover-opacity"></i></a>
   </p>
 
