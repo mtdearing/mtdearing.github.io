@@ -30,7 +30,45 @@
     background-color: #001E62 !important;
     color: #fff !important;
   }
-  @media (max-width: 600px) {
+  /* Profile card: circular photo overlaps a taller navy banner */
+  .profile-banner {
+    height: 104px;
+  }
+  .profile-card {
+    display: flow-root; /* keep the photo's negative margin from pulling the card over the banner */
+  }
+  .profile-photo {
+    box-shadow: none !important;
+    margin-top: -82px !important;
+    position: relative;
+    text-align: center;
+  }
+  .profile-photo img {
+    width: 72%;
+    max-width: 190px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  }
+  .profile-info {
+    text-align: center;
+    margin-top: 10px !important;
+    padding-bottom: 6px;
+  }
+  .profile-info h3 {
+    margin: 6px 0 8px;
+  }
+  .profile-info p {
+    margin: 10px 0;
+  }
+  /* Phones and tablets: stack the profile card above the content */
+  @media (max-width: 992px) {
+    .w3-quarter, .w3-threequarter {
+      width: 100%;
+    }
     .mobile-heading {
       font-size: 28px; /* fits the name on one line on phones */
       text-align: center;
@@ -45,38 +83,14 @@
     .site-logo img {
       max-width: 240px;
     }
-    /* Profile card: photo overlaps a taller navy banner */
     .profile-banner {
       height: 96px;
     }
-    .profile-card {
-      display: flow-root; /* keep the photo's negative margin from pulling the card over the banner */
-    }
     .profile-photo {
-      box-shadow: none !important;
       margin-top: -78px !important;
-      position: relative;
-      text-align: center;
     }
     .profile-photo img {
       width: 172px;
-      height: 172px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 50%;
-      border: 5px solid #fff;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
-    }
-    .profile-info {
-      text-align: center;
-      margin-top: 10px !important;
-      padding-bottom: 6px;
-    }
-    .profile-info h3 {
-      margin: 6px 0 8px;
-    }
-    .profile-info p {
-      margin: 10px 0;
     }
   }
   /* Highlights for the sub header list items */
